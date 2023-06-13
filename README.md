@@ -1,8 +1,8 @@
-#Simple React App to introduce certain hooks in React
+# Simple React App to introduce certain hooks in React
 
-First project of Build Web Apps with React & Firebase course on Udemy by The Net Ninja
+**First project of Build Web Apps with React & Firebase course on Udemy by The Net Ninja**
 
-##Learning useEffect and useCallback hooks and creating custom hooks
+## Learning useEffect and useCallback hooks and creating custom hooks
 
 //useEffect allows us to run some code only at specific times and when certain conditions are met
 
@@ -56,8 +56,8 @@ useEffect(() => {
 fetchTrips()
 }, [fetchTrips])
 
-##CUSTOM HOOK
-//MEMORY LEAK explained
+## CUSTOM HOOK
+ ### MEMORY LEAK explained
 //while the fetch if in process we remove/unmount the component that is using the data that should be fetched
 //eventhough we removed component, fetch is still ongoing and after is done react is trying to update the state in the component that is not there anymore
 //to fix memory leak we use cleanup functions in useEffect to cancel any kind of async tasks (async task is any task that returns promise - like fetching), so that useEffect doesn't try to update state in the component that is not there anymore (is unmounted)
@@ -78,7 +78,7 @@ fetchTrips()
     return () => (isMounted.current = false)
     }, [isMounted])
 
-//USE EFFECT AND REFFERENCE TYPE DEPENDENCIES
+### USE EFFECT AND REFFERENCE TYPE DEPENDENCIES
 //when react reevaluates the component because it is comparing references in memory everytime component rerenders react will see those references as changed and trigger the rerender causing infinite loop
 //to get around it there are couple of options:
 //1.wrap the refference type (object or array) in use state hook and pass the state as an argument to useFetch that will then pass it to useEffect inside of useFetch hook - because any state value passed as a dependency will not cause infinite loop
