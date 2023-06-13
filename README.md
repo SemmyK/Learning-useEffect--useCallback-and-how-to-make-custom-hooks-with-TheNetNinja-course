@@ -69,6 +69,7 @@ fetchTrips()
     `const isMounted = useRef(true)`
 2.  in cleanup function return isMounted as false
     //useEffect code
+    
 ` useEffect(() => {
     if (isMounted) {
     ...some async code (fetch or authentication something that will return promise and take time to fulfill)
@@ -77,6 +78,7 @@ fetchTrips()
     //cleanup to fix memory leaks
     return () => (isMounted.current = false)
     }, [isMounted]) `
+    
 
 
 ### USE EFFECT AND REFFERENCE TYPE DEPENDENCIES
