@@ -32,9 +32,9 @@ useCallback has url as dependency, so we can remove it from dependency array of 
 
 <!-- function to get trips from server -->
 
-const fetchTrips = useCallback(async () => {
+`const fetchTrips = useCallback(async () => {
 
-<!-- with async await we can use try/catch blog to catch the errors like we use in .then syntax -->
+ //with async await we can use try/catch blog to catch the errors like we use in .then syntax  
 
 try {
 const response = await fetch(url)
@@ -54,7 +54,7 @@ console.log(error)
 
 useEffect(() => {
 fetchTrips()
-}, [fetchTrips])
+}, [fetchTrips])`
 
 ## CUSTOM HOOK
  ### MEMORY LEAK explained
@@ -66,17 +66,18 @@ fetchTrips()
 //also we can use useRef for cleanup:
 
 1.  before any state in component make a isMounted ref
-    const isMounted = useRef(true)
+    `const isMounted = useRef(true)`
 2.  in cleanup function return isMounted as false
     //useEffect code
-    useEffect(() => {
+` useEffect(() => {
     if (isMounted) {
     ...some async code (fetch or authentication something that will return promise and take time to fulfill)
     }
 
     //cleanup to fix memory leaks
     return () => (isMounted.current = false)
-    }, [isMounted])
+    }, [isMounted]) `
+
 
 ### USE EFFECT AND REFFERENCE TYPE DEPENDENCIES
 //when react reevaluates the component because it is comparing references in memory everytime component rerenders react will see those references as changed and trigger the rerender causing infinite loop
@@ -84,3 +85,5 @@ fetchTrips()
 //1.wrap the refference type (object or array) in use state hook and pass the state as an argument to useFetch that will then pass it to useEffect inside of useFetch hook - because any state value passed as a dependency will not cause infinite loop
 //2. wrap the value in useRef hook inside of custom hook itself(in our case useFetch) - this will not cause infinite loop if we pass it as dependency
 //when we store refference type in useRef hook the ref values are not seen as different during the component reevaluation, so using referenced values as dependencies is not causing rerendering and infinite loop
+
+
