@@ -72,7 +72,7 @@ fetchTrips()
     
 ` useEffect(() => {
     if (isMounted) {
-    ...some async code (fetch or authentication something that will return promise and take time to fulfill)
+<!--     ...some async code (fetch or authentication something that will return promise and take time to fulfill) -->
     }
 
     //cleanup to fix memory leaks
